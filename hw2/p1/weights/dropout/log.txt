@@ -1,0 +1,23 @@
+INFO:root:Apex recommended for faster mixed precision training: https://github.com/NVIDIA/apex
+INFO:root:n_epochs: 500
+INFO:root:project: ml2021spring_hw2_p1
+INFO:root:model: dropout
+INFO:root:mode: train
+INFO:root:train_csv: ./covid.train.csv
+INFO:root:test_csv: ./covid.test.csv
+INFO:root:batch_size: 2048
+INFO:root:device: cuda
+INFO:root:lr: 0.0001
+INFO:root:momentum: 0.9
+INFO:root:weight_decay: 1e-05
+INFO:root:optimizer: Adam
+INFO:root:val_step: 10
+INFO:root:save_step: 20
+INFO:root:save_path: ./weights/dropout
+INFO:root:early_stop: 200
+INFO:root:output_csv: preidction.csv
+INFO:root:output_path: ./output/dropout
+INFO:root:weights: 
+INFO:root:log: True
+INFO:root:use_wandb: True
+INFO:root:nw: 6

@@ -1,0 +1,27 @@
+{
+    "os": "Linux-4.15.0-139-generic-x86_64-with-glibc2.10",
+    "python": "3.8.5",
+    "heartbeatAt": "2021-03-25T10:25:49.084216",
+    "startedAt": "2021-03-25T10:25:48.114806",
+    "docker": null,
+    "gpu": "GeForce RTX 3090",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": "10.0.130",
+    "args": [
+        "--log",
+        "--use-wandb"
+    ],
+    "state": "running",
+    "program": "main.py",
+    "codePath": "hw2/p1/main.py",
+    "git": {
+        "remote": "https://github.com/as468579/ml2020spring.git",
+        "commit": "e95549b48ec7da1f848887eefe8e412d121dd3f6"
+    },
+    "email": "r08922114@ntu.edu.tw",
+    "root": "/home/mvnl/Desktop/ml2021spring",
+    "host": "mvnl52827",
+    "username": "mvnl",
+    "executable": "/home/mvnl/anaconda3/envs/ml2021spring/bin/python"
+}

@@ -1,0 +1,84 @@
+INFO:root:Apex recommended for faster mixed precision training: https://github.com/NVIDIA/apex
+INFO:root:n_epochs: 40
+INFO:root:project: ml2021spring_hw2_p1
+INFO:root:model: default
+INFO:root:mode: train
+INFO:root:train_csv: ./covid.train.csv
+INFO:root:test_csv: ./covid.test.csv
+INFO:root:batch_size: 270
+INFO:root:device: cuda
+INFO:root:lr: 0.0001
+INFO:root:momentum: 0.9
+INFO:root:weight_decay: 1e-05
+INFO:root:optimizer: Adam
+INFO:root:val_step: 10
+INFO:root:save_step: 20
+INFO:root:save_path: ./weights/default
+INFO:root:early_stop: 200
+INFO:root:output_csv: preidction.csv
+INFO:root:output_path: ./output/default
+INFO:root:weights: 
+INFO:root:log: True
+INFO:root:use_wandb: True
+INFO:root:nw: 6
+INFO:root:[  1/40] Train Acc: 0.387536 Loss: 2.156992 | Val Acc: 0.494738 Loss: 1.693902
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_49.pt
+INFO:root:[  2/40] Train Acc: 0.524683 Loss: 1.581083 | Val Acc: 0.568180 Loss: 1.439279
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_56.pt
+INFO:root:[  3/40] Train Acc: 0.579104 Loss: 1.390283 | Val Acc: 0.607739 Loss: 1.298196
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_60.pt
+INFO:root:[  4/40] Train Acc: 0.614794 Loss: 1.265958 | Val Acc: 0.632781 Loss: 1.204864
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_63.pt
+INFO:root:[  5/40] Train Acc: 0.639399 Loss: 1.177428 | Val Acc: 0.651469 Loss: 1.137978
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_65.pt
+INFO:root:[  6/40] Train Acc: 0.657815 Loss: 1.111781 | Val Acc: 0.663177 Loss: 1.093981
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_66.pt
+INFO:root:[  7/40] Train Acc: 0.671563 Loss: 1.060887 | Val Acc: 0.672092 Loss: 1.060083
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_67.pt
+INFO:root:[  8/40] Train Acc: 0.683279 Loss: 1.019917 | Val Acc: 0.675918 Loss: 1.043283
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_67.pt
+INFO:root:[  9/40] Train Acc: 0.692488 Loss: 0.985332 | Val Acc: 0.683841 Loss: 1.014292
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_68.pt
+INFO:root:[ 10/40] Train Acc: 0.700574 Loss: 0.956269 | Val Acc: 0.686122 Loss: 1.004584
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_68.pt
+INFO:root:[ 11/40] Train Acc: 0.707427 Loss: 0.930900 | Val Acc: 0.690150 Loss: 0.990286
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_69.pt
+INFO:root:[ 12/40] Train Acc: 0.713694 Loss: 0.908164 | Val Acc: 0.691569 Loss: 0.983051
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_69.pt
+INFO:root:[ 13/40] Train Acc: 0.719218 Loss: 0.887933 | Val Acc: 0.690484 Loss: 0.981722
+INFO:root:[ 14/40] Train Acc: 0.723853 Loss: 0.869696 | Val Acc: 0.694655 Loss: 0.969769
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_69.pt
+INFO:root:[ 15/40] Train Acc: 0.728813 Loss: 0.852916 | Val Acc: 0.696675 Loss: 0.959585
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_69.pt
+INFO:root:[ 16/40] Train Acc: 0.733340 Loss: 0.837325 | Val Acc: 0.695976 Loss: 0.961090
+INFO:root:[ 17/40] Train Acc: 0.737342 Loss: 0.822995 | Val Acc: 0.697468 Loss: 0.956950
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_69.pt
+INFO:root:[ 18/40] Train Acc: 0.741086 Loss: 0.809682 | Val Acc: 0.696740 Loss: 0.959395
+INFO:root:[ 19/40] Train Acc: 0.744727 Loss: 0.797240 | Val Acc: 0.699492 Loss: 0.952769
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_69.pt
+INFO:root:[ 20/40] Train Acc: 0.748078 Loss: 0.785320 | Val Acc: 0.700013 Loss: 0.949057
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_70.pt
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/epoch_20.pt
+INFO:root:[ 21/40] Train Acc: 0.751270 Loss: 0.773949 | Val Acc: 0.698468 Loss: 0.955223
+INFO:root:[ 22/40] Train Acc: 0.754547 Loss: 0.762679 | Val Acc: 0.697667 Loss: 0.957241
+INFO:root:[ 23/40] Train Acc: 0.757384 Loss: 0.752825 | Val Acc: 0.702110 Loss: 0.945048
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_70.pt
+INFO:root:[ 24/40] Train Acc: 0.760362 Loss: 0.743043 | Val Acc: 0.701005 Loss: 0.946087
+INFO:root:[ 25/40] Train Acc: 0.763203 Loss: 0.733493 | Val Acc: 0.701415 Loss: 0.948202
+INFO:root:[ 26/40] Train Acc: 0.765773 Loss: 0.724429 | Val Acc: 0.699326 Loss: 0.955440
+INFO:root:[ 27/40] Train Acc: 0.768458 Loss: 0.715649 | Val Acc: 0.699277 Loss: 0.955558
+INFO:root:[ 28/40] Train Acc: 0.770615 Loss: 0.707246 | Val Acc: 0.699350 Loss: 0.951992
+INFO:root:[ 29/40] Train Acc: 0.773034 Loss: 0.699076 | Val Acc: 0.699354 Loss: 0.957124
+INFO:root:[ 30/40] Train Acc: 0.775384 Loss: 0.691013 | Val Acc: 0.700187 Loss: 0.954875
+INFO:root:[ 31/40] Train Acc: 0.777662 Loss: 0.683216 | Val Acc: 0.703757 Loss: 0.947980
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/best_acc_70.pt
+INFO:root:[ 32/40] Train Acc: 0.779783 Loss: 0.676163 | Val Acc: 0.700078 Loss: 0.964076
+INFO:root:[ 33/40] Train Acc: 0.782568 Loss: 0.668882 | Val Acc: 0.699090 Loss: 0.960401
+INFO:root:[ 34/40] Train Acc: 0.784078 Loss: 0.661575 | Val Acc: 0.700025 Loss: 0.961585
+INFO:root:[ 35/40] Train Acc: 0.786171 Loss: 0.654596 | Val Acc: 0.700809 Loss: 0.962818
+INFO:root:[ 36/40] Train Acc: 0.788299 Loss: 0.647929 | Val Acc: 0.700525 Loss: 0.965311
+INFO:root:[ 37/40] Train Acc: 0.790436 Loss: 0.641391 | Val Acc: 0.699541 Loss: 0.967892
+INFO:root:[ 38/40] Train Acc: 0.792251 Loss: 0.635016 | Val Acc: 0.700000 Loss: 0.971865
+INFO:root:[ 39/40] Train Acc: 0.794294 Loss: 0.628582 | Val Acc: 0.698614 Loss: 0.979088
+INFO:root:[ 40/40] Train Acc: 0.796207 Loss: 0.622086 | Val Acc: 0.700712 Loss: 0.972400
+INFO:root:Saved best Neural network ckeckpoints into ./weights/default/last.pt
