@@ -2,6 +2,7 @@
 import torch
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
+from torch.nn.utils.rnn import pad_sequence
 
 from utils.datasets import TIMITDataset
 from solver import Solver
@@ -39,12 +40,54 @@ def prepare_data():
     print(f'Loading data...')
     data_root = './timit_11/'
     train = np.load(os.path.join(data_root, 'train_11.npy'))
-    train_label = np.load(os.path.join(data_root, 'train_label_11.npy'))
+    train_label = np.load(os.path.join(data_root, 'train_label_11.npy')).astype(np.float)
     test = np.load(os.path.join(data_root, 'test_11.npy'))
 
-    print(f'Size of training data : {train.shape}')
-    print(f'Size of testing data : {test.shape}')
-    return train, train_label, test
+    new_train = []
+    new_test  = []
+    new_train_label = []
+
+    # Split Train Dataset
+    prev   = np.reshape(train[0], (11, 39))
+    data   = np.expand_dims(prev[5, :], axis=0)
+    labels = [ train_label[0] ]
+    for idx, tr in enumerate(train[1:], start=1):
+        tr = np.reshape(tr, (11, 39))
+        if not np.array_equal(prev[1:, :], tr[:-1, :]):
+            new_train.append(torch.tensor(data))
+            new_train_label.append(torch.tensor(labels))
+
+            data   = np.expand_dims(tr[5, :], axis=0)
+            labels = [ train_label[idx] ]
+        else:
+            temp = np.expand_dims(tr[5, :], axis=0)
+            data = np.concatenate((data, temp), axis=0)
+
+            labels += [ train_label[idx] ]
+        prev = tr
+
+    # Split Test Dataset
+    prev   = np.reshape(test[0], (11, 39))
+    data   = np.expand_dims(prev[5, :], axis=0)
+    for idx, te in enumerate(test[1:], start=1):
+        te = np.reshape(te, (11, 39))
+        if not np.array_equal(prev[1:, :], te[:-1, :]):
+            new_test.append(torch.tensor(data))
+            data   = np.expand_dims(te[5, :], axis=0)
+        else:
+            temp = np.expand_dims(te[5, :], axis=0)
+            data = np.concatenate((data, temp), axis=0)
+        prev = te
+
+    padded_train = pad_sequence(new_train, batch_first=True)
+    padded_train_label = pad_sequence(new_train_label, batch_first=True)
+    padded_test  = pad_sequence(new_test, batch_first=True)
+
+    print(f'Size of training data : {padded_train.shape}')
+    print(f'Size of training label : {padded_train_label.shape}')
+    print(f'Size of testing data : {padded_test.shape}')
+
+    return padded_train, padded_train_label, padded_test
 
 
 def main(config):
@@ -52,8 +95,8 @@ def main(config):
     fix_seeds(0) # set a  random seed for reproducibility
     
     train, train_label, test = prepare_data()
-
-    # Split data into training, validation set
+    exit(0)
+    # Split data into training, validation set  
     VAL_RATIO = 0.2
     percent = int(train.shape[0] * (1 - VAL_RATIO))
     train_x, train_y, val_x, val_y = train[:percent], train_label[:percent], train[percent:], train_label[percent:]

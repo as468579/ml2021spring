@@ -45,15 +45,18 @@ class LSTMNet(nn.Module):
         super(LSTMNet, self).__init__()
         self.hidden_dim    = hidden_dim
         self.is_bidirection = is_bidirection
+        self.num_directions = 2 if is_bidirection else 1
         self.num_layers     = num_layers
-        
-        output_hidden_dim = self.hidden_dim * 2 if is_bidirection else self.hidden_dim
-        
+
         self.lstm   = nn.LSTM(input_dim, self.hidden_dim, num_layers=num_layers, dropout=dropout_rate, bidirectional=is_bidirection)
-        self.linaer = nn.Linear(output_hidden_dim, 39) 
+        self.linaer = nn.Linear(self.hidden_dim*self.num_directions, 39) 
 
     def forward(self, x):
-        batch_size = 
+        batch_size = x.shape[0]
+        hidden_init = torch.ones(2, self.hidden_dim*self.num_directions, batch_size, self.hidden_dim).cuda()
+        hidden_state, cell_state = self.lstm(x, hidden_init)
+        output = self.linear(hidden_state)
+        return output
 
 # BLSTM for pBLSTM
 # Step 1: Reduce time resolution to half
