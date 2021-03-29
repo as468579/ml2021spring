@@ -45,14 +45,6 @@ for idx, te in enumerate(test[1:], start=1):
         data = np.concatenate((data, temp), axis=0)
     prev = te
 
-# packed_train       = pack_padded_sequence(new_train, train_lens, batch_first=True, enforce_sotred=False)
-# packed_train_label = pack_padded_sequence(new_train_label, train_label_lens, batch_first=True, enforce_sotred=False)
-# packed_test        = pack_padded_sequence(new_test, test_lens, batch_first=True, enforce_sotred=False)
-
-# train_padded       = pad_packed_sequence(packed_train, batch_first=True)
-# train_label_padded = pad_packed_sequence(packed_train_label, batch_first=True)
-# test_padded        = pad_packed_sequence(packed_test, backends=True)
-
 padded_train = pad_sequence(new_train, batch_first=True)
 padded_train_label = pad_sequence(new_train_label, batch_first=True)
 padded_test  = pad_sequence(new_test, batch_first=True)
