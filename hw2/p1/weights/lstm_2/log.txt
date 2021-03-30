@@ -1,0 +1,66 @@
+INFO:root:Apex recommended for faster mixed precision training: https://github.com/NVIDIA/apex
+INFO:root:n_epochs: 300
+INFO:root:project: ml2021spring_hw2_p1
+INFO:root:model: lstm_2
+INFO:root:dropout: 0.2
+INFO:root:mode: train
+INFO:root:train_csv: ./covid.train.csv
+INFO:root:test_csv: ./covid.test.csv
+INFO:root:batch_size: 300
+INFO:root:device: cuda
+INFO:root:lr: 0.0001
+INFO:root:momentum: 0.9
+INFO:root:weight_decay: 1e-05
+INFO:root:optimizer: Adam
+INFO:root:val_step: 10
+INFO:root:save_step: 20
+INFO:root:save_path: ./weights/lstm_2
+INFO:root:early_stop: 200
+INFO:root:output_csv: prediction.csv
+INFO:root:output_path: ./output/lstm_2
+INFO:root:weights: 
+INFO:root:log: True
+INFO:root:use_wandb: True
+INFO:root:nw: 6
+INFO:root:LSTMNet(
+  (lstm): LSTM(39, 256, num_layers=4, batch_first=True, dropout=0.2, bidirectional=True)
+  (l1): Linear(in_features=512, out_features=39, bias=True)
+  (relu): ReLU(inplace=True)
+  (dropout): Dropout(p=0.5, inplace=False)
+)
+INFO:root:[  1/300] Train Acc: 0.095207 Loss: 3.637121 | Val Acc: 0.175973 Loss: 3.596597
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_17.pt
+INFO:root:[  2/300] Train Acc: 0.152796 Loss: 3.530963 | Val Acc: 0.144063 Loss: 3.376538
+INFO:root:[  3/300] Train Acc: 0.146551 Loss: 3.251131 | Val Acc: 0.159887 Loss: 3.144005
+INFO:root:[  4/300] Train Acc: 0.201579 Loss: 3.044721 | Val Acc: 0.214018 Loss: 2.924307
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_21.pt
+INFO:root:[  5/300] Train Acc: 0.221355 Loss: 2.833359 | Val Acc: 0.251936 Loss: 2.728057
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_25.pt
+INFO:root:[  6/300] Train Acc: 0.266703 Loss: 2.630326 | Val Acc: 0.289167 Loss: 2.517556
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_28.pt
+INFO:root:[  7/300] Train Acc: 0.304100 Loss: 2.438938 | Val Acc: 0.335067 Loss: 2.328137
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_33.pt
+INFO:root:[  8/300] Train Acc: 0.356567 Loss: 2.255149 | Val Acc: 0.394695 Loss: 2.128587
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_39.pt
+INFO:root:[  9/300] Train Acc: 0.408067 Loss: 2.067817 | Val Acc: 0.438182 Loss: 1.948866
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_43.pt
+INFO:root:[ 10/300] Train Acc: 0.450596 Loss: 1.900909 | Val Acc: 0.482302 Loss: 1.786058
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_48.pt
+INFO:root:[ 11/300] Train Acc: 0.486402 Loss: 1.760578 | Val Acc: 0.517424 Loss: 1.653620
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_51.pt
+INFO:root:[ 12/300] Train Acc: 0.516356 Loss: 1.647944 | Val Acc: 0.539943 Loss: 1.555484
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_53.pt
+INFO:root:[ 13/300] Train Acc: 0.539940 Loss: 1.556421 | Val Acc: 0.562286 Loss: 1.475613
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_56.pt
+INFO:root:[ 14/300] Train Acc: 0.557779 Loss: 1.487239 | Val Acc: 0.575115 Loss: 1.428179
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_57.pt
+INFO:root:[ 15/300] Train Acc: 0.573238 Loss: 1.427623 | Val Acc: 0.589763 Loss: 1.365868
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_58.pt
+INFO:root:[ 16/300] Train Acc: 0.588233 Loss: 1.372002 | Val Acc: 0.601234 Loss: 1.320500
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_60.pt
+INFO:root:[ 17/300] Train Acc: 0.600285 Loss: 1.325876 | Val Acc: 0.614978 Loss: 1.271552
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_61.pt
+INFO:root:[ 18/300] Train Acc: 0.611254 Loss: 1.285277 | Val Acc: 0.623277 Loss: 1.239640
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_62.pt
+INFO:root:[ 19/300] Train Acc: 0.621029 Loss: 1.248400 | Val Acc: 0.632697 Loss: 1.198351
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_2/best_acc_63.pt

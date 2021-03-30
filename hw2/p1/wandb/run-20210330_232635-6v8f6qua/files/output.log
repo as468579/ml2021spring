@@ -1,0 +1,49 @@
+n_epochs: 300
+project: ml2021spring_hw2_p1
+model: lstm_2
+dropout: 0.2
+mode: train
+train_csv: ./covid.train.csv
+test_csv: ./covid.test.csv
+batch_size: 300
+device: cuda
+lr: 0.0001
+momentum: 0.9
+weight_decay: 1e-05
+optimizer: Adam
+val_step: 10
+save_step: 20
+save_path: ./weights/lstm_2
+early_stop: 200
+output_csv: prediction.csv
+output_path: ./output/lstm_2
+weights: 
+log: True
+use_wandb: True
+nw: 6
+Loading data...
+Size of training data : torch.Size([4620, 707, 39])
+Size of training label : torch.Size([4620, 707])
+Size of testing data : torch.Size([4620, 707, 39])
+Size of training set : torch.Size([3696, 707, 39])
+Size of validation set : torch.Size([924, 707, 39])
+/home/mvnl/anaconda3/envs/ml2021spring/lib/python3.8/site-packages/torch/nn/_reduction.py:42: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+[  1/300] 1/13 iters[  1/300] 2/13 iters[  1/300] 3/13 iters[  1/300] 4/13 iters[  1/300] 5/13 iters[  1/300] 6/13 iters[  1/300] 7/13 iters[  1/300] 8/13 iters[  1/300] 9/13 iters[  1/300] 10/13 iters[  1/300] 11/13 iters[  1/300] 12/13 iters[  1/300] 13/13 itersSaving model (epoch =   1, val acc = 0.176)
+[  2/300] 1/13 iters[  2/300] 2/13 iters[  2/300] 3/13 iters[  2/300] 4/13 iters[  2/300] 5/13 iters[  2/300] 6/13 iters[  2/300] 7/13 iters[  2/300] 8/13 iters[  2/300] 9/13 iters[  2/300] 10/13 iters[  2/300] 11/13 iters[  2/300] 12/13 iters[  2/300] 13/13 iters[  3/300] 1/13 iters[  3/300] 2/13 iters[  3/300] 3/13 iters[  3/300] 4/13 iters[  3/300] 5/13 iters[  3/300] 6/13 iters[  3/300] 7/13 iters[  3/300] 8/13 iters[  3/300] 9/13 iters[  3/300] 10/13 iters[  3/300] 11/13 iters[  3/300] 12/13 iters[  3/300] 13/13 iters[  4/300] 1/13 iters[  4/300] 2/13 iters[  4/300] 3/13 iters[  4/300] 4/13 iters[  4/300] 5/13 iters[  4/300] 6/13 iters[  4/300] 7/13 iters[  4/300] 8/13 iters[  4/300] 9/13 iters[  4/300] 10/13 iters[  4/300] 11/13 iters[  4/300] 12/13 iters[  4/300] 13/13 itersSaving model (epoch =   4, val acc = 0.214)
+[  5/300] 1/13 iters[  5/300] 2/13 iters[  5/300] 3/13 iters[  5/300] 4/13 iters[  5/300] 5/13 iters[  5/300] 6/13 iters[  5/300] 7/13 iters[  5/300] 8/13 iters[  5/300] 9/13 iters[  5/300] 10/13 iters[  5/300] 11/13 iters[  5/300] 12/13 iters[  5/300] 13/13 itersSaving model (epoch =   5, val acc = 0.252)
+[  6/300] 1/13 iters[  6/300] 2/13 iters[  6/300] 3/13 iters[  6/300] 4/13 iters[  6/300] 5/13 iters[  6/300] 6/13 iters[  6/300] 7/13 iters[  6/300] 8/13 iters[  6/300] 9/13 iters[  6/300] 10/13 iters[  6/300] 11/13 iters[  6/300] 12/13 iters[  6/300] 13/13 itersSaving model (epoch =   6, val acc = 0.289)
+[  7/300] 1/13 iters[  7/300] 2/13 iters[  7/300] 3/13 iters[  7/300] 4/13 iters[  7/300] 5/13 iters[  7/300] 6/13 iters[  7/300] 7/13 iters[  7/300] 8/13 iters[  7/300] 9/13 iters[  7/300] 10/13 iters[  7/300] 11/13 iters[  7/300] 12/13 iters[  7/300] 13/13 itersSaving model (epoch =   7, val acc = 0.335)
+[  8/300] 1/13 iters[  8/300] 2/13 iters[  8/300] 3/13 iters[  8/300] 4/13 iters[  8/300] 5/13 iters[  8/300] 6/13 iters[  8/300] 7/13 iters[  8/300] 8/13 iters[  8/300] 9/13 iters[  8/300] 10/13 iters[  8/300] 11/13 iters[  8/300] 12/13 iters[  8/300] 13/13 itersSaving model (epoch =   8, val acc = 0.395)
+[  9/300] 1/13 iters[  9/300] 2/13 iters[  9/300] 3/13 iters[  9/300] 4/13 iters[  9/300] 5/13 iters[  9/300] 6/13 iters[  9/300] 7/13 iters[  9/300] 8/13 iters[  9/300] 9/13 iters[  9/300] 10/13 iters[  9/300] 11/13 iters[  9/300] 12/13 iters[  9/300] 13/13 itersSaving model (epoch =   9, val acc = 0.438)
+[ 10/300] 1/13 iters[ 10/300] 2/13 iters[ 10/300] 3/13 iters[ 10/300] 4/13 iters[ 10/300] 5/13 iters[ 10/300] 6/13 iters[ 10/300] 7/13 iters[ 10/300] 8/13 iters[ 10/300] 9/13 iters[ 10/300] 10/13 iters[ 10/300] 11/13 iters[ 10/300] 12/13 iters[ 10/300] 13/13 itersSaving model (epoch =  10, val acc = 0.482)
+[ 11/300] 1/13 iters[ 11/300] 2/13 iters[ 11/300] 3/13 iters[ 11/300] 4/13 iters[ 11/300] 5/13 iters[ 11/300] 6/13 iters[ 11/300] 7/13 iters[ 11/300] 8/13 iters[ 11/300] 9/13 iters[ 11/300] 10/13 iters[ 11/300] 11/13 iters[ 11/300] 12/13 iters[ 11/300] 13/13 itersSaving model (epoch =  11, val acc = 0.517)
+[ 12/300] 1/13 iters[ 12/300] 2/13 iters[ 12/300] 3/13 iters[ 12/300] 4/13 iters[ 12/300] 5/13 iters[ 12/300] 6/13 iters[ 12/300] 7/13 iters[ 12/300] 8/13 iters[ 12/300] 9/13 iters[ 12/300] 10/13 iters[ 12/300] 11/13 iters[ 12/300] 12/13 iters[ 12/300] 13/13 itersSaving model (epoch =  12, val acc = 0.540)
+[ 13/300] 1/13 iters[ 13/300] 2/13 iters[ 13/300] 3/13 iters[ 13/300] 4/13 iters[ 13/300] 5/13 iters[ 13/300] 6/13 iters[ 13/300] 7/13 iters[ 13/300] 8/13 iters[ 13/300] 9/13 iters[ 13/300] 10/13 iters[ 13/300] 11/13 iters[ 13/300] 12/13 iters[ 13/300] 13/13 itersSaving model (epoch =  13, val acc = 0.562)
+[ 14/300] 1/13 iters[ 14/300] 2/13 iters[ 14/300] 3/13 iters[ 14/300] 4/13 iters[ 14/300] 5/13 iters[ 14/300] 6/13 iters[ 14/300] 7/13 iters[ 14/300] 8/13 iters[ 14/300] 9/13 iters[ 14/300] 10/13 iters[ 14/300] 11/13 iters[ 14/300] 12/13 iters[ 14/300] 13/13 itersSaving model (epoch =  14, val acc = 0.575)
+[ 15/300] 1/13 iters[ 15/300] 2/13 iters[ 15/300] 3/13 iters[ 15/300] 4/13 iters[ 15/300] 5/13 iters[ 15/300] 6/13 iters[ 15/300] 7/13 iters[ 15/300] 8/13 iters[ 15/300] 9/13 iters[ 15/300] 10/13 iters[ 15/300] 11/13 iters[ 15/300] 12/13 iters[ 15/300] 13/13 itersSaving model (epoch =  15, val acc = 0.590)
+[ 16/300] 1/13 iters[ 16/300] 2/13 iters[ 16/300] 3/13 iters[ 16/300] 4/13 iters[ 16/300] 5/13 iters[ 16/300] 6/13 iters[ 16/300] 7/13 iters[ 16/300] 8/13 iters[ 16/300] 9/13 iters[ 16/300] 10/13 iters[ 16/300] 11/13 iters[ 16/300] 12/13 iters[ 16/300] 13/13 itersSaving model (epoch =  16, val acc = 0.601)
+[ 17/300] 1/13 iters[ 17/300] 2/13 iters[ 17/300] 3/13 iters[ 17/300] 4/13 iters[ 17/300] 5/13 iters[ 17/300] 6/13 iters[ 17/300] 7/13 iters[ 17/300] 8/13 iters[ 17/300] 9/13 iters[ 17/300] 10/13 iters[ 17/300] 11/13 iters[ 17/300] 12/13 iters[ 17/300] 13/13 itersSaving model (epoch =  17, val acc = 0.615)
+[ 18/300] 1/13 iters[ 18/300] 2/13 iters[ 18/300] 3/13 iters[ 18/300] 4/13 iters[ 18/300] 5/13 iters[ 18/300] 6/13 iters[ 18/300] 7/13 iters[ 18/300] 8/13 iters[ 18/300] 9/13 iters[ 18/300] 10/13 iters[ 18/300] 11/13 iters[ 18/300] 12/13 iters[ 18/300] 13/13 itersSaving model (epoch =  18, val acc = 0.623)
+[ 19/300] 1/13 iters[ 19/300] 2/13 iters[ 19/300] 3/13 iters[ 19/300] 4/13 iters[ 19/300] 5/13 iters[ 19/300] 6/13 iters[ 19/300] 7/13 iters[ 19/300] 8/13 iters[ 19/300] 9/13 iters[ 19/300] 10/13 iters[ 19/300] 11/13 iters[ 19/300] 12/13 iters[ 19/300] 13/13 itersSaving model (epoch =  19, val acc = 0.633)
+[ 20/300] 1/13 iters[ 20/300] 2/13 iters[ 20/300] 3/13 iters

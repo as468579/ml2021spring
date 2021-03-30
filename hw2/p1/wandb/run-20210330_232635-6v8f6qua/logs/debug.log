@@ -1,0 +1,26 @@
+2021-03-30 23:26:35,017 INFO    MainThread:14872 [wandb_setup.py:_flush():69] setting env: {}
+2021-03-30 23:26:35,017 INFO    MainThread:14872 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-03-30 23:26:35,017 INFO    MainThread:14872 [wandb_init.py:_log_setup():336] Logging user logs to /home/mvnl/Desktop/ml2021spring/hw2/p1/wandb/run-20210330_232635-6v8f6qua/logs/debug.log
+2021-03-30 23:26:35,017 INFO    MainThread:14872 [wandb_init.py:_log_setup():337] Logging internal logs to /home/mvnl/Desktop/ml2021spring/hw2/p1/wandb/run-20210330_232635-6v8f6qua/logs/debug-internal.log
+2021-03-30 23:26:35,018 INFO    MainThread:14872 [wandb_init.py:init():369] calling init triggers
+2021-03-30 23:26:35,018 INFO    MainThread:14872 [wandb_init.py:init():374] wandb.init called with sweep_config: {}
+config: {}
+2021-03-30 23:26:35,018 INFO    MainThread:14872 [wandb_init.py:init():418] starting backend
+2021-03-30 23:26:35,018 INFO    MainThread:14872 [backend.py:_multiprocessing_setup():69] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2021-03-30 23:26:35,054 INFO    MainThread:14872 [backend.py:ensure_launched():123] starting backend process...
+2021-03-30 23:26:35,060 INFO    MainThread:14872 [backend.py:ensure_launched():127] started backend process with pid: 14888
+2021-03-30 23:26:35,061 INFO    MainThread:14872 [wandb_init.py:init():423] backend started and connected
+2021-03-30 23:26:35,063 INFO    MainThread:14872 [wandb_init.py:init():463] updated telemetry
+2021-03-30 23:26:35,064 INFO    MainThread:14872 [wandb_init.py:init():482] communicating current version
+2021-03-30 23:26:35,680 INFO    MainThread:14872 [wandb_init.py:init():487] got version response 
+2021-03-30 23:26:35,680 INFO    MainThread:14872 [wandb_init.py:init():495] communicating run to backend with 30 second timeout
+2021-03-30 23:26:35,922 INFO    MainThread:14872 [wandb_init.py:init():520] starting run threads in backend
+2021-03-30 23:26:35,970 INFO    MainThread:14872 [wandb_run.py:_console_start():1507] atexit reg
+2021-03-30 23:26:35,970 INFO    MainThread:14872 [wandb_run.py:_redirect():1370] redirect: SettingsConsole.REDIRECT
+2021-03-30 23:26:35,971 INFO    MainThread:14872 [wandb_run.py:_redirect():1375] Redirecting console.
+2021-03-30 23:26:35,971 INFO    MainThread:14872 [redirect.py:install():213] install start
+2021-03-30 23:26:35,971 INFO    MainThread:14872 [redirect.py:install():228] install stop
+2021-03-30 23:26:35,971 INFO    MainThread:14872 [redirect.py:install():213] install start
+2021-03-30 23:26:35,971 INFO    MainThread:14872 [redirect.py:install():228] install stop
+2021-03-30 23:26:35,971 INFO    MainThread:14872 [wandb_run.py:_redirect():1421] Redirects installed.
+2021-03-30 23:26:35,971 INFO    MainThread:14872 [wandb_init.py:init():544] run started, returning control to user process

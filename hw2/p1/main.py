@@ -167,7 +167,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--n_epochs', type=int, default=300)
     parser.add_argument('--project', type=str, default='ml2021spring_hw2_p1')
-    parser.add_argument('--model', type=str, default='lstm_1')
+    parser.add_argument('--model', type=str, default='lstm_2')
     parser.add_argument('--dropout', type=float, default=0.2)
     parser.add_argument('--mode', choices=['train', 'dev', 'test'], default='train')
     parser.add_argument('--train-csv', type=str, default='./covid.train.csv', help="Path of training csv file")

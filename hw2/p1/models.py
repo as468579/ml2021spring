@@ -49,9 +49,9 @@ class LSTMNet(nn.Module):
         self.num_layers     = num_layers
 
         self.lstm   = nn.LSTM(input_dim, self.hidden_dim, num_layers=num_layers, dropout=dropout_rate, bidirectional=is_bidirection, batch_first=True)
-        self.l1 = nn.Linear(self.hidden_dim*self.num_directions, 256) 
-        self.l2 = nn.Linear(256, 256)
-        self.l3 = nn.Linear(256, 39)
+        self.l1 = nn.Linear(self.hidden_dim*self.num_directions, 39) 
+        # self.l2 = nn.Linear(256, 256)
+        # self.l3 = nn.Linear(256, 39)
         self.relu = nn.ReLU(inplace=True)
         self.dropout = nn.Dropout(p=0.5)
 
@@ -63,8 +63,8 @@ class LSTMNet(nn.Module):
 
         output, (hidden_state, cell_state) = self.lstm(x.cuda(), (hidden_init, cell_init))
         output = self.l1(output)
-        output = self.l2(output)
-        output = self.l3(output)
+        # output = self.l2(output)
+        # output = self.l3(output)
         return output
 
 # BLSTM for pBLSTM
