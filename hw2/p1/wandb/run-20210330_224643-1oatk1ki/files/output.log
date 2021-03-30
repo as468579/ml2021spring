@@ -1,0 +1,43 @@
+n_epochs: 300
+project: ml2021spring_hw2_p1
+model: lstm_1
+dropout: 0.2
+mode: train
+train_csv: ./covid.train.csv
+test_csv: ./covid.test.csv
+batch_size: 400
+device: cuda
+lr: 0.0001
+momentum: 0.9
+weight_decay: 1e-05
+optimizer: Adam
+val_step: 10
+save_step: 20
+save_path: ./weights/lstm_1
+early_stop: 200
+output_csv: prediction.csv
+output_path: ./output/lstm_1
+weights: 
+log: True
+use_wandb: True
+nw: 6
+Loading data...
+Size of training data : torch.Size([4620, 707, 39])
+Size of training label : torch.Size([4620, 707])
+Size of testing data : torch.Size([4620, 707, 39])
+Size of training set : torch.Size([3696, 707, 39])
+Size of validation set : torch.Size([924, 707, 39])
+/home/mvnl/anaconda3/envs/ml2021spring/lib/python3.8/site-packages/torch/nn/_reduction.py:42: UserWarning: size_average and reduce args will be deprecated, please use reduction='none' instead.
+  warnings.warn(warning.format(ret))
+[  1/300] 1/10 itersTraceback (most recent call last):
+  File "main.py", line 228, in <module>
+    main(config)
+  File "main.py", line 159, in main
+    solver.train(train_loader, val_loader)
+  File "/home/mvnl/Desktop/ml2021spring/hw2/p1/solver.py", line 88, in train
+    batch_loss.backward()
+  File "/home/mvnl/anaconda3/envs/ml2021spring/lib/python3.8/site-packages/torch/tensor.py", line 245, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/mvnl/anaconda3/envs/ml2021spring/lib/python3.8/site-packages/torch/autograd/__init__.py", line 145, in backward
+    Variable._execution_engine.run_backward(
+RuntimeError: cuDNN error: CUDNN_STATUS_EXECUTION_FAILED

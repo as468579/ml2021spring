@@ -41,82 +41,82 @@ def prepare_data():
     data_root = './timit_11/'
 
 
-    # train = np.load(os.path.join(data_root, 'my_train.npy'))
-    # train_label = np.load(os.path.join(data_root, 'my_train_label.npy'))
-    # test = np.load(os.path.join(data_root, 'my_test.npy'))
+    train = np.load(os.path.join(data_root, 'my_train.npy'))
+    train_label = np.load(os.path.join(data_root, 'my_train_label.npy'))
+    test = np.load(os.path.join(data_root, 'my_test.npy'))
 
-    train = np.load(os.path.join(data_root, 'train_11.npy'))
-    train_label = np.load(os.path.join(data_root, 'train_label_11.npy')).astype(np.float64)
-    test = np.load(os.path.join(data_root, 'test_11.npy'))
+    # train = np.load(os.path.join(data_root, 'train_11.npy'))
+    # train_label = np.load(os.path.join(data_root, 'train_label_11.npy')).astype(np.float64)
+    # test = np.load(os.path.join(data_root, 'test_11.npy'))
 
-    new_train = []
-    new_test  = []
-    new_train_label = []
+    # new_train = []
+    # new_test  = []
+    # new_train_label = []
 
-    # Split Train Dataset
-    prev   = np.reshape(train[0], (11, 39))
-    data   = np.expand_dims(prev[5, :], axis=0)
-    labels = [ train_label[0] ]
-    for idx, tr in enumerate(train[1:], start=1):
-        tr = np.reshape(tr, (11, 39))
+    # # Split Train Dataset
+    # prev   = np.reshape(train[0], (11, 39))
+    # data   = np.expand_dims(prev[5, :], axis=0)
+    # labels = [ train_label[0] ]
+    # for idx, tr in enumerate(train[1:], start=1):
+    #     tr = np.reshape(tr, (11, 39))
 
-        if (idx == (len(train) - 1)):
-            temp = np.expand_dims(tr[5, :], axis=0)
-            data = np.concatenate((data, temp), axis=0)
+    #     if (idx == (len(train) - 1)):
+    #         temp = np.expand_dims(tr[5, :], axis=0)
+    #         data = np.concatenate((data, temp), axis=0)
 
-            labels += [ train_label[idx] ]
+    #         labels += [ train_label[idx] ]
 
-            new_train.append(torch.tensor(data))
-            new_train_label.append(torch.tensor(labels))
+    #         new_train.append(torch.tensor(data))
+    #         new_train_label.append(torch.tensor(labels))
 
-        elif not np.array_equal(prev[1:, :], tr[:-1, :]):
-            new_train.append(torch.tensor(data))
-            new_train_label.append(torch.tensor(labels))
+    #     elif not np.array_equal(prev[1:, :], tr[:-1, :]):
+    #         new_train.append(torch.tensor(data))
+    #         new_train_label.append(torch.tensor(labels))
 
-            data   = np.expand_dims(tr[5, :], axis=0)
-            labels = [ train_label[idx] ]
-        else:
-            temp = np.expand_dims(tr[5, :], axis=0)
-            data = np.concatenate((data, temp), axis=0)
+    #         data   = np.expand_dims(tr[5, :], axis=0)
+    #         labels = [ train_label[idx] ]
+    #     else:
+    #         temp = np.expand_dims(tr[5, :], axis=0)
+    #         data = np.concatenate((data, temp), axis=0)
 
-            labels += [ train_label[idx] ]
-        prev = tr
-    del train, train_label
+    #         labels += [ train_label[idx] ]
+    #     prev = tr
+    # del train, train_label
 
-    # Split Test Dataset
-    prev   = np.reshape(test[0], (11, 39))
-    data   = np.expand_dims(prev[5, :], axis=0)
-    for idx, te in enumerate(test[1:], start=1):
-        te = np.reshape(te, (11, 39))
+    # # Split Test Dataset
+    # prev   = np.reshape(test[0], (11, 39))
+    # data   = np.expand_dims(prev[5, :], axis=0)
+    # for idx, te in enumerate(test[1:], start=1):
+    #     te = np.reshape(te, (11, 39))
 
-        if (idx == (len(test) - 1)):
-            temp = np.expand_dims(te[5, :], axis=0)
-            data = np.concatenate((data, temp), axis=0)
-            new_test.append(torch.tensor(data))
+    #     if (idx == (len(test) - 1)):
+    #         temp = np.expand_dims(te[5, :], axis=0)
+    #         data = np.concatenate((data, temp), axis=0)
+    #         new_test.append(torch.tensor(data))
 
-        elif not np.array_equal(prev[1:, :], te[:-1, :]):
-            new_test.append(torch.tensor(data))
-            data   = np.expand_dims(te[5, :], axis=0)
+    #     elif not np.array_equal(prev[1:, :], te[:-1, :]):
+    #         new_test.append(torch.tensor(data))
+    #         data   = np.expand_dims(te[5, :], axis=0)
 
-        else:
-            temp = np.expand_dims(te[5, :], axis=0)
-            data = np.concatenate((data, temp), axis=0)
-        prev = te
+    #     else:
+    #         temp = np.expand_dims(te[5, :], axis=0)
+    #         data = np.concatenate((data, temp), axis=0)
+    #     prev = te
     
-    del test
+    # del test
 
 
-    padded_train = pad_sequence(new_train, batch_first=True)
-    padded_train_label = pad_sequence(new_train_label, batch_first=True)
-    padded_test  = pad_sequence(new_test, batch_first=True)
+    # padded_train = pad_sequence(new_train, batch_first=True)
+    # padded_train_label = pad_sequence(new_train_label, batch_first=True)
+    # padded_test  = pad_sequence(new_test, batch_first=True)
 
-    np.save('my_train', padded_train)
-    np.save('my_train_label', padded_train_label)
-    np.save('my_test', padded_test)
+    # np.save('my_train', padded_train)
+    # np.save('my_train_label', padded_train_label)
+    # np.save('my_test', padded_test)
 
-    # padded_train       = torch.from_numpy(train)
-    # padded_train_label = torch.from_numpy(train_label)
-    # padded_test        = torch.from_numpy(test)
+    padded_train       = torch.from_numpy(train)
+    padded_train_label = torch.from_numpy(train_label)
+    padded_test        = torch.from_numpy(test)
 
     print(f'Size of training data : {padded_train.shape}')
     print(f'Size of training label : {padded_train_label.shape}')
@@ -156,23 +156,23 @@ def main(config):
     solver = Solver(config)
 
     # Train
-    # solver.train(train_loader, val_loader)
+    solver.train(train_loader, val_loader)
 
     # Test
-    solver.restore_model(f'epoch_100.pt')                  # Load best model
+    solver.restore_model(f'last.pt')                  # Load best model
     preds = solver.test(test_loader)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--n_epochs', type=int, default=150)
+    parser.add_argument('--n_epochs', type=int, default=300)
     parser.add_argument('--project', type=str, default='ml2021spring_hw2_p1')
     parser.add_argument('--model', type=str, default='lstm_1')
     parser.add_argument('--dropout', type=float, default=0.2)
     parser.add_argument('--mode', choices=['train', 'dev', 'test'], default='train')
     parser.add_argument('--train-csv', type=str, default='./covid.train.csv', help="Path of training csv file")
     parser.add_argument('--test-csv', type=str, default='./covid.test.csv', help="Path of testing csv file")
-    parser.add_argument('--batch-size', type=int, default=800)
+    parser.add_argument('--batch-size', type=int, default=300)
     parser.add_argument('--device', default='', help='device id (i.e. 0 or 0, 1 or cpu)')
     parser.add_argument('--lr', type=float, default=1e-4)
     parser.add_argument('--momentum', type=float, default=0.9)
