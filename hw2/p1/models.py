@@ -48,14 +48,23 @@ class LSTMNet(nn.Module):
         self.num_directions = 2 if is_bidirection else 1
         self.num_layers     = num_layers
 
-        self.lstm   = nn.LSTM(input_dim, self.hidden_dim, num_layers=num_layers, dropout=dropout_rate, bidirectional=is_bidirection)
-        self.linaer = nn.Linear(self.hidden_dim*self.num_directions, 39) 
+        self.lstm   = nn.LSTM(input_dim, self.hidden_dim, num_layers=num_layers, dropout=dropout_rate, bidirectional=is_bidirection, batch_first=True)
+        self.l1 = nn.Linear(self.hidden_dim*self.num_directions, 256) 
+        self.l2 = nn.Linear(256, 256)
+        self.l3 = nn.Linear(256, 39)
+        self.relu = nn.ReLU(inplace=True)
+        self.dropout = nn.Dropout(p=0.5)
 
     def forward(self, x):
         batch_size = x.shape[0]
-        hidden_init = torch.ones(2, self.hidden_dim*self.num_directions, batch_size, self.hidden_dim).cuda()
-        hidden_state, cell_state = self.lstm(x, hidden_init)
-        output = self.linear(hidden_state)
+
+        hidden_init = torch.ones(self.num_layers*self.num_directions, batch_size, self.hidden_dim).cuda()
+        cell_init   = torch.ones(self.num_layers*self.num_directions, batch_size, self.hidden_dim).cuda()
+
+        output, (hidden_state, cell_state) = self.lstm(x.cuda(), (hidden_init, cell_init))
+        output = self.l1(output)
+        output = self.l2(output)
+        output = self.l3(output)
         return output
 
 # BLSTM for pBLSTM
@@ -100,7 +109,7 @@ class LSTMNet(nn.Module):
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
     
 

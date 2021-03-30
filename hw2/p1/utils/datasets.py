@@ -8,10 +8,9 @@ class TIMITDataset(Dataset):
     def __init__(self, X, y=None):
 
         # Convert from float64 to float32
-        self.data = torch.from_numpy(X).float()
+        self.data = X.float()
         if y is not None:
-            y = y.astype(np.int)
-            self.label = torch.LongTensor(y)
+            self.label = y.long()
 
         else:
             self.label = None

@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from models import Classifier
+from models import Classifier, LSTMNet
 from utils.averger import Averager
 
 import os
@@ -20,7 +20,8 @@ class Solver(object):
     def build_models(self):
 
         # Models
-        self.net = Classifier().to(self.config['device'])
+        # self.net = Classifier().to(self.config['device'])
+        self.net = LSTMNet(39, 256, is_bidirection=True, dropout_rate=self.config['dropout']).to(self.config['device'])
 
         # Optimizers
         self.optimizer = getattr(torch.optim, self.config['optimizer'])(
@@ -29,7 +30,7 @@ class Solver(object):
         )
 
         # Citerion
-        self.criterion = nn.CrossEntropyLoss()
+        self.criterion = nn.CrossEntropyLoss(reduce=False)
 
         # Record
         logging.info(self.net)
@@ -60,38 +61,41 @@ class Solver(object):
         best_acc = 0.0
         for epoch in range(1, self.config['n_epochs']+1):
             record = {}
-            train_acc  = 0.0
-            train_loss = 0.0
-            val_acc    = 0.0
-            val_loss   = 0.0
+            train_acc  = Averager()
+            train_loss = Averager()
+            val_acc    = Averager()
+            val_loss   = Averager()
 
             # Start training
             self.net.train()
             for i_batch, batch in enumerate(tr_set, start=1):
 
-                # if i_batch != len(tr_set):
-                #     print(f"[{epoch}/{self.config['n_epochs']}] {i_batch}/{len(tr_set)} iters", end='\r')
-                # else:
-                #     print(f"[{epoch}/{self.config['n_epochs']}] {i_batch}/{len(tr_set)} iters")
-
                 print(f"[{epoch:3d}/{self.config['n_epochs']}] {i_batch}/{len(tr_set)} iters", end='\r')
 
                 x, y = batch[0].to(self.config['device']), batch[1].to(self.config['device'])
                 pred = self.net(x)
-                batch_loss = self.criterion(pred, y)
-                _, train_pred = torch.max(pred, dim=1)
 
+                # Calculate loss
+                is_target = torch.sign(torch.abs(torch.sum(x, dim=-1)))
+                batch_loss = self.criterion(pred.view(-1, 39), y.view(-1))
+                batch_loss = batch_loss.view(is_target.shape[0], -1)
+                batch_loss *= is_target
+                batch_loss = torch.sum(batch_loss)
+
+                _, train_pred = torch.max(pred, dim=-1)
                 # Update model
                 self.optimizer.zero_grad()
                 batch_loss.backward()
                 self.optimizer.step()
 
                 # Record
-                train_acc += (train_pred.cpu() == y.cpu()).sum().item()
-                train_loss += batch_loss.item()
+                num_target = is_target.cpu().sum().item()
+                acc = ((train_pred.cpu() == y.cpu()) * is_target.cpu()).sum().item()
+                train_acc.add(acc, num_target)
+                train_loss.add(batch_loss.item(), num_target)
 
-            train_acc /=  num_train_set
-            train_loss /= len(tr_set)
+            train_acc = train_acc.getValue()
+            train_loss = train_loss.getValue()
 
             record['train_acc'] = train_acc
             record['train_loss'] = train_loss
@@ -103,14 +107,23 @@ class Solver(object):
 
                     x, y = x.to(self.config['device']), y.to(self.config['device'])
                     pred = self.net(x)
-                    batch_loss = self.criterion(pred, y)
-                    _, val_pred = torch.max(pred, dim=1)
 
-                    val_acc += (val_pred.cpu() == y.cpu()).sum().item()
-                    val_loss += batch_loss.item()
+                    # Calculate loss
+                    is_target = torch.sign(torch.abs(torch.sum(x, dim=-1)))
+                    batch_loss = self.criterion(pred.view(-1, 39), y.view(-1))
+                    batch_loss = batch_loss.view(is_target.shape[0], -1)
+                    batch_loss *= is_target
+                    batch_loss = torch.sum(batch_loss)
 
-                val_acc  /= num_val_set
-                val_loss /= len(val_set)
+                    _, val_pred = torch.max(pred, dim=-1)
+
+                    num_target = is_target.cpu().sum().item()
+                    acc = ((val_pred.cpu() == y.cpu()) * is_target.cpu()).sum().item()
+                    val_acc.add(acc, num_target)
+                    val_loss.add(batch_loss.item(), num_target)
+
+                val_acc  = val_acc.getValue()
+                val_loss = val_loss.getValue()
 
                 record['val_acc'] = val_acc
                 record['val_loss'] = val_loss
@@ -145,16 +158,18 @@ class Solver(object):
         self.net.eval()
         preds = []
         with torch.no_grad():
-            for data in te_set:
-                x = data.to(self.config['device'])
+            for x in te_set:
+                x = x.to(self.config['device'])
                 pred = self.net(x)
-                _, test_pred = torch.max(pred, dim=1)
+                _, test_pred = torch.max(pred, dim=-1)
 
-                for y in test_pred.cpu().numpy():
-                    preds += [y]
 
-        with open(self.config['output_csv'], w) as f:
+                is_target = torch.sign(torch.abs(torch.sum(x, dim=-1)))
+                for i_batch, batch in enumerate(test_pred.cpu().numpy()):
+                    preds += [p for idx, p in enumerate(batch) if is_target[i_batch, idx] ]
+
+        with open(self.config['output_csv'], 'w') as f:
             f.write('Id,Class\n')
             for i, y in enumerate(preds):
-                f.write(f'{i}, {y}\n')
+                f.write(f'{i},{y}\n')
         
