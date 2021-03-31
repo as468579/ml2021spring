@@ -41,8 +41,8 @@ def prepare_data():
     data_root = './timit_11/'
 
 
-    train = np.load(os.path.join(data_root, 'my_train.npy'))
-    train_label = np.load(os.path.join(data_root, 'my_train_label.npy'))
+    train = np.load(os.path.join(data_root, 'pseudo_train.npy'))
+    train_label = np.load(os.path.join(data_root, 'pseudo_label.npy'))
     test = np.load(os.path.join(data_root, 'my_test.npy'))
 
     # train = np.load(os.path.join(data_root, 'train_11.npy'))
@@ -149,30 +149,42 @@ def main(config):
     test_loader  = DataLoader(test_set, batch_size=config['batch_size'], shuffle=False)
 
     # Clean up unneeded variables to save memory
-    del train, train_label, train_x, train_y, val_x, val_y
-    gc.collect()
+    # del train, train_label, train_x, train_y, val_x, val_y
+    # gc.collect()
 
 
     solver = Solver(config)
 
     # Train
-    solver.train(train_loader, val_loader)
+    # solver.train(train_loader, val_loader)
 
     # Test
-    solver.restore_model(f'last.pt')                  # Load best model
-    preds = solver.test(test_loader)
+    solver.restore_model(f'epoch_80.pt')                  # Load best model
+    pseudo_train, pseudo_label = solver.test(test_loader)
+
+    # Merge pseudo label
+    # pseudo_train = [tr for tr in train] + pseudo_train
+    # pseudo_label = [lb for lb in train_label] + pseudo_label
+
+    # pseudo_train = pad_sequence(pseudo_train, batch_first=True)
+    # pseudo_label = pad_sequence(pseudo_label, batch_first=True)
+    # print(f'Size of padded pseudo training data : {pseudo_train.shape}')
+    # print(f'Size of padded pseudo training label : {pseudo_label.shape}')
+
+    # np.save('pseudo_train', pseudo_train)
+    # np.save('pseudo_label', pseudo_label)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--n_epochs', type=int, default=300)
     parser.add_argument('--project', type=str, default='ml2021spring_hw2_p1')
-    parser.add_argument('--model', type=str, default='lstm_2')
-    parser.add_argument('--dropout', type=float, default=0.2)
+    parser.add_argument('--model', type=str, default='lstm_pseudo_60')
+    parser.add_argument('--dropout', type=float, default=0.5)
     parser.add_argument('--mode', choices=['train', 'dev', 'test'], default='train')
     parser.add_argument('--train-csv', type=str, default='./covid.train.csv', help="Path of training csv file")
     parser.add_argument('--test-csv', type=str, default='./covid.test.csv', help="Path of testing csv file")
-    parser.add_argument('--batch-size', type=int, default=300)
+    parser.add_argument('--batch-size', type=int, default=200)
     parser.add_argument('--device', default='', help='device id (i.e. 0 or 0, 1 or cpu)')
     parser.add_argument('--lr', type=float, default=1e-4)
     parser.add_argument('--momentum', type=float, default=0.9)

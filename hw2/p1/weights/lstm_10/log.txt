@@ -1,0 +1,196 @@
+INFO:root:Apex recommended for faster mixed precision training: https://github.com/NVIDIA/apex
+INFO:root:n_epochs: 300
+INFO:root:project: ml2021spring_hw2_p1
+INFO:root:model: lstm_10
+INFO:root:dropout: 0.2
+INFO:root:mode: train
+INFO:root:train_csv: ./covid.train.csv
+INFO:root:test_csv: ./covid.test.csv
+INFO:root:batch_size: 200
+INFO:root:device: cuda
+INFO:root:lr: 0.0001
+INFO:root:momentum: 0.9
+INFO:root:weight_decay: 1e-05
+INFO:root:optimizer: Adam
+INFO:root:val_step: 10
+INFO:root:save_step: 20
+INFO:root:save_path: ./weights/lstm_10
+INFO:root:early_stop: 200
+INFO:root:output_csv: prediction.csv
+INFO:root:output_path: ./output/lstm_10
+INFO:root:weights: 
+INFO:root:log: True
+INFO:root:use_wandb: True
+INFO:root:nw: 6
+INFO:root:LSTMNet(
+  (lstm): LSTM(39, 256, num_layers=5, batch_first=True, dropout=0.2, bidirectional=True)
+  (l1): Linear(in_features=512, out_features=256, bias=True)
+  (l2): Linear(in_features=256, out_features=39, bias=True)
+  (bn1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (dropout): Dropout(p=0.5, inplace=False)
+)
+INFO:root:[  1/300] Train Acc: 0.221195 Loss: 3.174444 | Val Acc: 0.268605 Loss: 3.614484
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_26.pt
+INFO:root:[  2/300] Train Acc: 0.366592 Loss: 2.338992 | Val Acc: 0.421067 Loss: 3.458824
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_42.pt
+INFO:root:[  3/300] Train Acc: 0.418810 Loss: 2.048062 | Val Acc: 0.479704 Loss: 3.061612
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_47.pt
+INFO:root:[  4/300] Train Acc: 0.452510 Loss: 1.893130 | Val Acc: 0.514719 Loss: 2.271818
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_51.pt
+INFO:root:[  5/300] Train Acc: 0.479601 Loss: 1.779161 | Val Acc: 0.543268 Loss: 1.649741
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_54.pt
+INFO:root:[  6/300] Train Acc: 0.504364 Loss: 1.683650 | Val Acc: 0.568779 Loss: 1.458881
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_56.pt
+INFO:root:[  7/300] Train Acc: 0.525364 Loss: 1.599005 | Val Acc: 0.587485 Loss: 1.376337
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_58.pt
+INFO:root:[  8/300] Train Acc: 0.544569 Loss: 1.525807 | Val Acc: 0.603389 Loss: 1.308763
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_60.pt
+INFO:root:[  9/300] Train Acc: 0.560951 Loss: 1.463301 | Val Acc: 0.616746 Loss: 1.261099
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_61.pt
+INFO:root:[ 10/300] Train Acc: 0.575120 Loss: 1.409578 | Val Acc: 0.628428 Loss: 1.215667
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_62.pt
+INFO:root:[ 11/300] Train Acc: 0.587061 Loss: 1.362136 | Val Acc: 0.640633 Loss: 1.172988
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_64.pt
+INFO:root:[ 12/300] Train Acc: 0.599796 Loss: 1.318120 | Val Acc: 0.646632 Loss: 1.140775
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_64.pt
+INFO:root:[ 13/300] Train Acc: 0.608861 Loss: 1.280878 | Val Acc: 0.659254 Loss: 1.101940
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_65.pt
+INFO:root:[ 14/300] Train Acc: 0.619727 Loss: 1.240513 | Val Acc: 0.664156 Loss: 1.074048
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_66.pt
+INFO:root:[ 15/300] Train Acc: 0.628650 Loss: 1.205252 | Val Acc: 0.670350 Loss: 1.051406
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_67.pt
+INFO:root:[ 16/300] Train Acc: 0.637232 Loss: 1.174970 | Val Acc: 0.678728 Loss: 1.023848
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_67.pt
+INFO:root:[ 17/300] Train Acc: 0.644812 Loss: 1.145631 | Val Acc: 0.684288 Loss: 1.001874
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_68.pt
+INFO:root:[ 18/300] Train Acc: 0.652664 Loss: 1.118964 | Val Acc: 0.688857 Loss: 0.981050
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_68.pt
+INFO:root:[ 19/300] Train Acc: 0.660044 Loss: 1.091577 | Val Acc: 0.694046 Loss: 0.963536
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_69.pt
+INFO:root:[ 20/300] Train Acc: 0.666399 Loss: 1.068375 | Val Acc: 0.699725 Loss: 0.944282
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_69.pt
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/epoch_20.pt
+INFO:root:[ 21/300] Train Acc: 0.672579 Loss: 1.044337 | Val Acc: 0.700906 Loss: 0.936585
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_70.pt
+INFO:root:[ 22/300] Train Acc: 0.679213 Loss: 1.021924 | Val Acc: 0.705973 Loss: 0.916022
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_70.pt
+INFO:root:[ 23/300] Train Acc: 0.684067 Loss: 1.004058 | Val Acc: 0.710272 Loss: 0.901787
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_71.pt
+INFO:root:[ 24/300] Train Acc: 0.690175 Loss: 0.982130 | Val Acc: 0.712980 Loss: 0.891134
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_71.pt
+INFO:root:[ 25/300] Train Acc: 0.696284 Loss: 0.961676 | Val Acc: 0.717482 Loss: 0.874923
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_71.pt
+INFO:root:[ 26/300] Train Acc: 0.700971 Loss: 0.942327 | Val Acc: 0.718705 Loss: 0.867552
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_71.pt
+INFO:root:[ 27/300] Train Acc: 0.706767 Loss: 0.923222 | Val Acc: 0.723582 Loss: 0.852350
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_72.pt
+INFO:root:[ 28/300] Train Acc: 0.711484 Loss: 0.906015 | Val Acc: 0.725717 Loss: 0.840837
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_72.pt
+INFO:root:[ 29/300] Train Acc: 0.715182 Loss: 0.890647 | Val Acc: 0.728906 Loss: 0.834330
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_72.pt
+INFO:root:[ 30/300] Train Acc: 0.720680 Loss: 0.874035 | Val Acc: 0.731037 Loss: 0.823579
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_73.pt
+INFO:root:[ 31/300] Train Acc: 0.724761 Loss: 0.858706 | Val Acc: 0.733454 Loss: 0.816149
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_73.pt
+INFO:root:[ 32/300] Train Acc: 0.729606 Loss: 0.843931 | Val Acc: 0.735842 Loss: 0.811341
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_73.pt
+INFO:root:[ 33/300] Train Acc: 0.733471 Loss: 0.828055 | Val Acc: 0.737846 Loss: 0.804214
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_73.pt
+INFO:root:[ 34/300] Train Acc: 0.737672 Loss: 0.814508 | Val Acc: 0.740048 Loss: 0.800273
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_74.pt
+INFO:root:[ 35/300] Train Acc: 0.740999 Loss: 0.801123 | Val Acc: 0.741478 Loss: 0.790787
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_74.pt
+INFO:root:[ 36/300] Train Acc: 0.746103 Loss: 0.786089 | Val Acc: 0.743014 Loss: 0.788897
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_74.pt
+INFO:root:[ 37/300] Train Acc: 0.749459 Loss: 0.772857 | Val Acc: 0.745203 Loss: 0.781015
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_74.pt
+INFO:root:[ 38/300] Train Acc: 0.753394 Loss: 0.758480 | Val Acc: 0.744279 Loss: 0.785683
+INFO:root:[ 39/300] Train Acc: 0.756790 Loss: 0.748222 | Val Acc: 0.747228 Loss: 0.779943
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_74.pt
+INFO:root:[ 40/300] Train Acc: 0.760465 Loss: 0.734559 | Val Acc: 0.748878 Loss: 0.774561
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_74.pt
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/epoch_40.pt
+INFO:root:[ 41/300] Train Acc: 0.764974 Loss: 0.719855 | Val Acc: 0.751042 Loss: 0.770300
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 42/300] Train Acc: 0.768554 Loss: 0.708855 | Val Acc: 0.750338 Loss: 0.774349
+INFO:root:[ 43/300] Train Acc: 0.771869 Loss: 0.697020 | Val Acc: 0.750747 Loss: 0.773456
+INFO:root:[ 44/300] Train Acc: 0.774878 Loss: 0.685963 | Val Acc: 0.753637 Loss: 0.760232
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 45/300] Train Acc: 0.779332 Loss: 0.671982 | Val Acc: 0.755489 Loss: 0.760960
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 46/300] Train Acc: 0.782999 Loss: 0.660944 | Val Acc: 0.753421 Loss: 0.771456
+INFO:root:[ 47/300] Train Acc: 0.786267 Loss: 0.650767 | Val Acc: 0.755856 Loss: 0.763831
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 48/300] Train Acc: 0.788972 Loss: 0.641374 | Val Acc: 0.757193 Loss: 0.756444
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 49/300] Train Acc: 0.792826 Loss: 0.627252 | Val Acc: 0.757505 Loss: 0.760766
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 50/300] Train Acc: 0.796201 Loss: 0.616268 | Val Acc: 0.757282 Loss: 0.767516
+INFO:root:[ 51/300] Train Acc: 0.799662 Loss: 0.607175 | Val Acc: 0.755231 Loss: 0.772194
+INFO:root:[ 52/300] Train Acc: 0.802298 Loss: 0.598776 | Val Acc: 0.759214 Loss: 0.756709
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 53/300] Train Acc: 0.805047 Loss: 0.588036 | Val Acc: 0.759450 Loss: 0.764750
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_75.pt
+INFO:root:[ 54/300] Train Acc: 0.808671 Loss: 0.576583 | Val Acc: 0.758007 Loss: 0.772773
+INFO:root:[ 55/300] Train Acc: 0.811179 Loss: 0.568037 | Val Acc: 0.760699 Loss: 0.764397
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_76.pt
+INFO:root:[ 56/300] Train Acc: 0.814508 Loss: 0.557561 | Val Acc: 0.759758 Loss: 0.771126
+INFO:root:[ 57/300] Train Acc: 0.817506 Loss: 0.548463 | Val Acc: 0.760159 Loss: 0.772484
+INFO:root:[ 58/300] Train Acc: 0.819747 Loss: 0.540857 | Val Acc: 0.761762 Loss: 0.774917
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_76.pt
+INFO:root:[ 59/300] Train Acc: 0.822426 Loss: 0.529742 | Val Acc: 0.760285 Loss: 0.782250
+INFO:root:[ 60/300] Train Acc: 0.826125 Loss: 0.521945 | Val Acc: 0.759294 Loss: 0.792256
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/epoch_60.pt
+INFO:root:[ 61/300] Train Acc: 0.829001 Loss: 0.511491 | Val Acc: 0.762234 Loss: 0.785294
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_76.pt
+INFO:root:[ 62/300] Train Acc: 0.831391 Loss: 0.504500 | Val Acc: 0.762205 Loss: 0.794879
+INFO:root:[ 63/300] Train Acc: 0.833785 Loss: 0.496029 | Val Acc: 0.761180 Loss: 0.792891
+INFO:root:[ 64/300] Train Acc: 0.836094 Loss: 0.488680 | Val Acc: 0.762791 Loss: 0.790975
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/best_acc_76.pt
+INFO:root:[ 65/300] Train Acc: 0.838525 Loss: 0.479960 | Val Acc: 0.762205 Loss: 0.798436
+INFO:root:[ 66/300] Train Acc: 0.841110 Loss: 0.472277 | Val Acc: 0.761100 Loss: 0.808383
+INFO:root:[ 67/300] Train Acc: 0.843480 Loss: 0.463562 | Val Acc: 0.760357 Loss: 0.817930
+INFO:root:[ 68/300] Train Acc: 0.845552 Loss: 0.456086 | Val Acc: 0.761884 Loss: 0.805685
+INFO:root:[ 69/300] Train Acc: 0.847663 Loss: 0.451026 | Val Acc: 0.759969 Loss: 0.825583
+INFO:root:[ 70/300] Train Acc: 0.849973 Loss: 0.442953 | Val Acc: 0.762234 Loss: 0.814502
+INFO:root:[ 71/300] Train Acc: 0.852536 Loss: 0.434840 | Val Acc: 0.761513 Loss: 0.822253
+INFO:root:[ 72/300] Train Acc: 0.854542 Loss: 0.428561 | Val Acc: 0.762391 Loss: 0.827406
+INFO:root:[ 73/300] Train Acc: 0.856116 Loss: 0.423199 | Val Acc: 0.761391 Loss: 0.828732
+INFO:root:[ 74/300] Train Acc: 0.859193 Loss: 0.414372 | Val Acc: 0.762433 Loss: 0.832382
+INFO:root:[ 75/300] Train Acc: 0.860826 Loss: 0.408198 | Val Acc: 0.762779 Loss: 0.835052
+INFO:root:[ 76/300] Train Acc: 0.862448 Loss: 0.403151 | Val Acc: 0.760188 Loss: 0.852036
+INFO:root:[ 77/300] Train Acc: 0.864118 Loss: 0.397304 | Val Acc: 0.761960 Loss: 0.844018
+INFO:root:[ 78/300] Train Acc: 0.865178 Loss: 0.392671 | Val Acc: 0.761226 Loss: 0.854522
+INFO:root:[ 79/300] Train Acc: 0.866283 Loss: 0.389109 | Val Acc: 0.762492 Loss: 0.852410
+INFO:root:[ 80/300] Train Acc: 0.868884 Loss: 0.381968 | Val Acc: 0.761041 Loss: 0.866600
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/epoch_80.pt
+INFO:root:[ 81/300] Train Acc: 0.870280 Loss: 0.376440 | Val Acc: 0.760977 Loss: 0.865735
+INFO:root:[ 82/300] Train Acc: 0.872333 Loss: 0.369919 | Val Acc: 0.762526 Loss: 0.877089
+INFO:root:[ 83/300] Train Acc: 0.873895 Loss: 0.364655 | Val Acc: 0.761403 Loss: 0.876650
+INFO:root:[ 84/300] Train Acc: 0.875815 Loss: 0.359657 | Val Acc: 0.762184 Loss: 0.886356
+INFO:root:[ 85/300] Train Acc: 0.876940 Loss: 0.354822 | Val Acc: 0.760724 Loss: 0.887295
+INFO:root:[ 86/300] Train Acc: 0.877694 Loss: 0.351386 | Val Acc: 0.760180 Loss: 0.900912
+INFO:root:[ 87/300] Train Acc: 0.879648 Loss: 0.345716 | Val Acc: 0.762331 Loss: 0.897348
+INFO:root:[ 88/300] Train Acc: 0.881917 Loss: 0.339955 | Val Acc: 0.760741 Loss: 0.906730
+INFO:root:[ 89/300] Train Acc: 0.883489 Loss: 0.334557 | Val Acc: 0.761863 Loss: 0.899046
+INFO:root:[ 90/300] Train Acc: 0.883875 Loss: 0.332250 | Val Acc: 0.761505 Loss: 0.907408
+INFO:root:[ 91/300] Train Acc: 0.885223 Loss: 0.328827 | Val Acc: 0.761133 Loss: 0.915876
+INFO:root:[ 92/300] Train Acc: 0.886177 Loss: 0.324687 | Val Acc: 0.761159 Loss: 0.922027
+INFO:root:[ 93/300] Train Acc: 0.887600 Loss: 0.320689 | Val Acc: 0.760863 Loss: 0.927298
+INFO:root:[ 94/300] Train Acc: 0.889122 Loss: 0.315568 | Val Acc: 0.760716 Loss: 0.937991
+INFO:root:[ 95/300] Train Acc: 0.889890 Loss: 0.312887 | Val Acc: 0.760813 Loss: 0.936338
+INFO:root:[ 96/300] Train Acc: 0.891885 Loss: 0.307020 | Val Acc: 0.760471 Loss: 0.944683
+INFO:root:[ 97/300] Train Acc: 0.893142 Loss: 0.302811 | Val Acc: 0.759674 Loss: 0.946706
+INFO:root:[ 98/300] Train Acc: 0.893716 Loss: 0.300258 | Val Acc: 0.758421 Loss: 0.963513
+INFO:root:[ 99/300] Train Acc: 0.894854 Loss: 0.297240 | Val Acc: 0.760766 Loss: 0.952877
+INFO:root:[100/300] Train Acc: 0.896341 Loss: 0.291835 | Val Acc: 0.759581 Loss: 0.969309
+INFO:root:Saved best Neural network ckeckpoints into ./weights/lstm_10/epoch_100.pt
+INFO:root:[101/300] Train Acc: 0.897085 Loss: 0.289729 | Val Acc: 0.759151 Loss: 0.976911
+INFO:root:[102/300] Train Acc: 0.897305 Loss: 0.288403 | Val Acc: 0.760606 Loss: 0.968924
+INFO:root:[103/300] Train Acc: 0.898433 Loss: 0.284880 | Val Acc: 0.760222 Loss: 0.978128
+INFO:root:[104/300] Train Acc: 0.900041 Loss: 0.279368 | Val Acc: 0.759087 Loss: 0.988374
+INFO:root:[105/300] Train Acc: 0.901271 Loss: 0.276501 | Val Acc: 0.758868 Loss: 0.988908
+INFO:root:[106/300] Train Acc: 0.901667 Loss: 0.274052 | Val Acc: 0.759003 Loss: 0.996581
+INFO:root:[107/300] Train Acc: 0.903223 Loss: 0.271145 | Val Acc: 0.760648 Loss: 0.987297
+INFO:root:[108/300] Train Acc: 0.903629 Loss: 0.268154 | Val Acc: 0.759319 Loss: 0.997365
+INFO:root:[109/300] Train Acc: 0.904923 Loss: 0.264946 | Val Acc: 0.759176 Loss: 1.010674

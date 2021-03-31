@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import numpy as np
 from models import Classifier, LSTMNet
 from utils.averger import Averager
 
@@ -21,7 +22,7 @@ class Solver(object):
 
         # Models
         # self.net = Classifier().to(self.config['device'])
-        self.net = LSTMNet(39, 256, is_bidirection=True, dropout_rate=self.config['dropout']).to(self.config['device'])
+        self.net = LSTMNet(39, 256, num_layers=5, is_bidirection=True, dropout_rate=self.config['dropout']).to(self.config['device'])
 
         # Optimizers
         self.optimizer = getattr(torch.optim, self.config['optimizer'])(
@@ -153,23 +154,45 @@ class Solver(object):
         print(f'Finished training after {epoch} epochs.')
         return
 
+    def gussian(self, pred_prob):
+        gussian_kernel = np.array([0.000000003244555, 0.007462608761363, 0.985074775988165, 0.007462608761363, 0.000000003244555])
+        pred_prob = pred_prob.cpu().numpy()
+        for i_batch in range(pred_prob.shape[0]):
+            for idx in range(39):
+                pred_prob[i_batch, 2:-2, idx] = np.convolve(pred_prob[i_batch, 2:-2, idx], gussian_kernel, 'same')
+        
+        return torch.tensor(pred_prob)
 
-    def test(self, te_set):
+    def test(self, te_set, threshold=0.6):
         self.net.eval()
         preds = []
+        pseudo_train = []
+        pseudo_label = []
         with torch.no_grad():
             for x in te_set:
                 x = x.to(self.config['device'])
                 pred = self.net(x)
-                _, test_pred = torch.max(pred, dim=-1)
+                # pred = self.gussian(pred)
+                pred_prob, test_pred = torch.max(pred, dim=-1)
 
 
                 is_target = torch.sign(torch.abs(torch.sum(x, dim=-1)))
+                
+                # Store pseudo training data 
+                for i_batch, batch in enumerate(x.cpu().numpy()):
+                    new_train = torch.tensor([ p for idx, p in enumerate(batch) if (is_target[i_batch, idx]) and pred_prob[i_batch, idx] > threshold])
+                    pseudo_train.append(new_train)
+
+                # Store result and pseudo training label
                 for i_batch, batch in enumerate(test_pred.cpu().numpy()):
                     preds += [p for idx, p in enumerate(batch) if is_target[i_batch, idx] ]
+                    new_label = torch.tensor([ l for idx, l in enumerate(batch) if(is_target[i_batch, idx] and pred_prob[i_batch, idx] > threshold) ])
+                    pseudo_label.append(new_label)
 
         with open(self.config['output_csv'], 'w') as f:
             f.write('Id,Class\n')
             for i, y in enumerate(preds):
                 f.write(f'{i},{y}\n')
+
+        return pseudo_train, pseudo_label
         

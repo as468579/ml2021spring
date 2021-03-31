@@ -49,10 +49,12 @@ class LSTMNet(nn.Module):
         self.num_layers     = num_layers
 
         self.lstm   = nn.LSTM(input_dim, self.hidden_dim, num_layers=num_layers, dropout=dropout_rate, bidirectional=is_bidirection, batch_first=True)
-        self.l1 = nn.Linear(self.hidden_dim*self.num_directions, 39) 
-        # self.l2 = nn.Linear(256, 256)
+        self.l1 = nn.Linear(self.hidden_dim*self.num_directions, 256) 
+        self.l2 = nn.Linear(256, 39)
         # self.l3 = nn.Linear(256, 39)
-        self.relu = nn.ReLU(inplace=True)
+        self.bn1 = nn.BatchNorm1d(256)
+        # self.bn2 = nn.BatchNorm1d(256)
+        # self.relu = nn.ReLU(inplace=True)
         self.dropout = nn.Dropout(p=0.5)
 
     def forward(self, x):
@@ -62,9 +64,18 @@ class LSTMNet(nn.Module):
         cell_init   = torch.ones(self.num_layers*self.num_directions, batch_size, self.hidden_dim).cuda()
 
         output, (hidden_state, cell_state) = self.lstm(x.cuda(), (hidden_init, cell_init))
+
         output = self.l1(output)
-        # output = self.l2(output)
+        output = self.bn1(output.transpose(1, 2)).transpose(1, 2)
+        output = self.dropout(output)
+
+        output = self.l2(output)
+        # output = self.bn2(output.transpose(1, 2)).transpose(1, 2)
+        # output = self.dropout(output)
+
         # output = self.l3(output)
+        # output = self.relu(output)
+
         return output
 
 # BLSTM for pBLSTM
